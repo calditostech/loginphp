@@ -15,21 +15,27 @@ if(!$_SESSION['usuario']) {
 <head>
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700" rel="stylesheet">
-    <link rel="stylesheet" href="css/estilo.css">
-    <title>Curso PHP</title>
+    <link rel="stylesheet" href="recursos/css/estilo.css">
+    <link rel="stylesheet" href="recursos/css/exercicio.css">
+    <title>Exercício</title>
 </head>
-<body>
+<body class="exercicio">
     <header class="cabecalho">
         <h1>Curso PHP</h1>
-        <h2>Índice dos Exercícios</h2>
+        <h2>Visualização do Exercício</h2>
     </header>
     <nav class="navegacao">
         <span class="usuario">Usuário: <?= $_SESSION['usuario'] ?></span>
+        <a href=<?= "/{$_GET['dir']}/{$_GET['file']}.php" ?> 
+            class="verde">Sem formatação</a>
+        <a href="index.php">Voltar</a>
         <a href="logout.php" class="vermelho">Sair</a>
     </nav>
     <main class="principal">
         <div class="conteudo">
-            <?php require_once('menu.php'); ?>
+            <?php
+                include(__DIR__ . "/{$_GET['dir']}/{$_GET['file']}.php");
+            ?>
         </div>
     </main>
     <footer class="rodape">
